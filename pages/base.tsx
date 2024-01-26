@@ -54,7 +54,7 @@ const tetriminoPatterns = {
 };
 
 
-export default function Home() {
+export default function Base() {
     const [rows, setRows] = useState(16);
     const [columns, setColumns] = useState(16);
     const [board, setBoard] = useState<number[][]>(Array.from({ length: ROWS }, () => Array(COLUMNS).fill(0)));
@@ -120,10 +120,7 @@ export default function Home() {
 
     const selectRandomTetrimino = () => {
         const randomTetrimino = getRandomTetrimino();
-        // ランダムな数字（1から3）でテトリミノの色を変更
-        const coloredTetrimino = randomTetrimino.map(row => row.map(cell => (cell === 1 ? Math.floor(Math.random() * 3) + 1 : 0)));
-        console.log("selected tetrimino", coloredTetrimino)
-        setSelectedTetrimino(coloredTetrimino);
+        setSelectedTetrimino(randomTetrimino);
     };
 
     const canPlaceTetrimino = (row: number, col: number, tetrimino: number[][]) => {
@@ -277,7 +274,7 @@ export default function Home() {
                                     style={{
                                         width: 20 , // 300px
                                         height: 20, // 20px
-                                        backgroundColor: getCellColor(cell),
+                                        backgroundColor: cell === 1 ? 'blue' : 'transparent',
                                         border: '1px solid #ccc',
                                         boxSizing: 'border-box',
                                         margin: 0,
@@ -291,21 +288,6 @@ export default function Home() {
             </div>
         );
     };
-
-    // テトリミノのセルの色を返す関数
-    const getCellColor = (cellValue) => {
-        switch (cellValue) {
-            case 1:
-                return 'blue'; // 青
-            case 2:
-                return 'yellow'; // 黄
-            case 3:
-                return 'green'; // 緑
-            default:
-                return 'transparent';
-        }
-    };
-
     const renderBoard = () => {
         return (
             <div style={{ display: 'flex' }}>
@@ -328,7 +310,7 @@ export default function Home() {
                                     style={{
                                         width: BLOCK_SIZE,
                                         height: BLOCK_SIZE,
-                                        backgroundColor: getCellColor(cell),
+                                        backgroundColor: cell === 1 ? 'blue' : 'black',
                                         boxSizing: 'border-box',
                                         margin: 0,
                                         padding: 0,

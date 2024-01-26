@@ -1,0 +1,14 @@
+/* styles.module.css */
+
+.cell {
+    /* セルの共通スタイル */
+    width: 100%; /* デフォルトで100%に設定 */
+    height: 100%; /* デフォルトで100%に設定 */
+    border: 1px solid #ccc;
+}
+
+.cellHovered {
+    /* マウスオーバー時のセルのスタイル */
+    border: 1px solid #ff0000; /* マウスオーバー時のセルの border 色を赤 (#ff0000) に変更 */
+
+}
