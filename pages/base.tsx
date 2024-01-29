@@ -60,8 +60,8 @@ const tetriminoPatterns:TetriminoPatterns = {
 
 
 export default function Base() {
-    const [rows, setRows] = useState(16);
-    const [columns, setColumns] = useState(16);
+    const [rows, setRows] = useState(ROWS);
+    const [columns, setColumns] = useState(COLUMNS);
     const [board, setBoard] = useState<number[][]>(Array.from({ length: ROWS }, () => Array(COLUMNS).fill(0)));
     const [selectedTetrimino, setSelectedTetrimino] = useState<number[][] | null>(null);
     const [hoveredCell, setHoveredCell] = useState<{ row: number; col: number } | null>(null);
@@ -70,6 +70,7 @@ export default function Base() {
 
     useEffect(() => {
         // Initialize the game board with filled cells
+        if(rows < 1 || columns < 1) return;
         const newBoard = Array.from({ length: rows }, () => Array(columns).fill(0));
 
         setBoard(newBoard);
