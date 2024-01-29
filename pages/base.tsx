@@ -7,8 +7,13 @@ const COLUMNS = 7;
 const BLOCK_SIZE = 20;
 
 
+// テトリミノのパターンの型定義
+interface TetriminoPatterns {
+    [key: string]: number[][];
+}
+
 // テトリミノのパターン
-const tetriminoPatterns = {
+const tetriminoPatterns:TetriminoPatterns = {
     I: [
         [1, 1, 1, 1],
         [0, 0, 0, 0],

@@ -7,8 +7,13 @@ const COLUMNS = 7;
 const BLOCK_SIZE = 20;
 
 
+// テトリミノのパターンの型定義
+interface TetriminoPatterns {
+    [key: string]: number[][];
+}
+
 // テトリミノのパターン
-const tetriminoPatterns = {
+const tetriminoPatterns: TetriminoPatterns = {
     I: [
         [1, 1, 1, 1],
         [0, 0, 0, 0],
@@ -293,7 +298,7 @@ export default function Home() {
     };
 
     // テトリミノのセルの色を返す関数
-    const getCellColor = (cellValue) => {
+    const getCellColor = (cellValue: number) => {
         switch (cellValue) {
             case 1:
                 return 'blue'; // 青
